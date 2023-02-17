@@ -59,4 +59,28 @@ print(square)
 gen = (i for i in range(56) if i%3==0)
 for item in gen:
     print(item)
+#          map function_to apply and list of inputs
+def squre(n):
+    return n**2
+h1 = [1,3,5,7,9,11,13]
+sq = list(map(squre, h1))
+print(sq)
+
+# filter funchion
+def dived_by_2(n):
+    extra = n % 2
+    if extra == 0 :
+        return True
+    else:
+        return False
+li = [1,2,3,9,6,8,28,56,35,72,672]
+div_by2=list(filter(dived_by_2, li))
+print(div_by2)
 '''
+# reduce function
+from functools import reduce
+
+def sum_num(a, b):
+    return a+b
+li1 = reduce(sum_num, [1,2,3,4])
+print(li1)
