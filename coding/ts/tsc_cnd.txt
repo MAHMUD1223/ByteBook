@@ -1,0 +1,5 @@
+# to start
+   npm i -g typescript
+   tsc --init
+# to compile
+   tsc filename.ts
