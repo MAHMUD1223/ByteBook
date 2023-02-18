@@ -49,4 +49,50 @@ for i in float_binary:
         bi_st+=num
         num2+=1
 
-print(bi_st)
+print(f"Your binary number is {bi_st}")
+
+
+#octal
+dec = decimal
+#dec=int(decimal)
+octal=[]
+while dec>0:
+    div = dec/8
+    div = int(div)
+    remi= dec%8
+    dec=div
+    octal.append(remi)
+ans = list(reversed(octal))
+anso=""
+for i in ans:
+    anso+=f"{i}"
+print(f"Your octal number is {anso}")
+
+#hexadecimal
+dec = decimal
+hexa=[]
+while dec>0:
+    div = dec/16
+    div = int(div)
+    remi= dec%16
+    dec=div
+    if remi<10:
+        hexa.append(remi)
+    elif remi == 10:
+        hexa.append("A")
+    elif remi == 11:
+        hexa.append("B")
+    elif remi == 12:
+        hexa.append("C")
+    elif remi == 13:
+        hexa.append("D")
+    elif remi == 14:
+        hexa.append("E")
+    elif remi == 15:
+        hexa.append("F")
+ans = list(reversed(hexa))
+anso=""
+for i in ans:
+    anso+=f"{i}"
+print(f"Your Hexadecimal number is {anso}")
+
