@@ -16,3 +16,4 @@ puts str.length()
 puts str.include?("Mahmud")
 puts str[0]
 puts str[0, 6]
+puts str.index("mile")
