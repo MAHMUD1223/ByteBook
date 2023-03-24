@@ -12,3 +12,7 @@ puts str.upcase()
 puts str.downcase()
 puts str.capitalize()
 puts str.strip()
+puts str.length()
+puts str.include?("Mahmud")
+puts str[0]
+puts str[0, 6]
