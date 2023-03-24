@@ -11,3 +11,4 @@ puts str
 puts str.upcase()
 puts str.downcase()
 puts str.capitalize()
+puts str.strip()
