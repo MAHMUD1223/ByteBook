@@ -27,23 +27,23 @@ then
    echo "True"
 else
    echo "Flase condition"
-fi 
+fi
 if [ -d /workspace/haval/ ] # `-d` for dir check. `-f` for file check. to run cmd without [] run `command -v {cmd}`
 then
    echo "exits"
 else
    echo "does not exits"
-   fi 
+   fi
 
 
 #   exit  with `exit` we can end the script
 if [ -d /etc ]
-then 
+then
    echo "dic exits"
    exit 0
 else
    echo "does not exits"
-   exit 1 '
+   exit 1
 
 
 #     While loop
@@ -54,3 +54,10 @@ do
    mynum1=$(( $mynum1 + 1 ))
    sleep .5
 done
+
+#    for loop
+for i in {1..10}
+do
+    echo $i
+    sleep 1
+done '
