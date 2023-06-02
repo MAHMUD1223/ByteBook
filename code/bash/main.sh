@@ -66,7 +66,7 @@ done
 printer() {
    echo "Hello everyone! $q"
 }
-printer() '
+printer() 
 
 #     Case
 echo "Choose your character?"
@@ -84,5 +84,7 @@ case $ans in
 3) echo "yo boy you are thinking something naughty" ;;
 4) echo "want be a master train for decate man" ;;
 5) echo "............................... hahahaha" ;;
-*) echo "are you a fool ?"
-esac
+*) echo "are you a fool ?" ;;
+esac "
+
+echo "ehell"
