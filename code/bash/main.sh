@@ -85,6 +85,16 @@ case $ans in
 4) echo "want be a master train for decate man" ;;
 5) echo "............................... hahahaha" ;;
 *) echo "are you a fool ?" ;;
-esac "
+esac 
 
-echo "ehell"
+#     Scheduling jobs
+  # with at
+  #
+  # To get which is runing 'atq'
+  # to delete `atrm <atq_no>`
+
+# sample cmd `at hour:min <month><date><year>`
+
+  echo "the script ran at $(date)" > /workspace/ByteBook/err.log
+  "
+  
