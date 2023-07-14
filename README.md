@@ -7,4 +7,4 @@ Thanks
 
 
 # Necessary links
-<a herf="https://htmx.org/docs/#introduction" target="_blank">Learn HTMX</a>
+<a href="https://htmx.org/docs/#introduction" target="_blank">Learn HTMX</a>
