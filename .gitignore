@@ -1,2 +1,3 @@
 .gitpod.yml
 zig-linux
+.env
