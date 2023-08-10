@@ -1,9 +1,9 @@
 # Byte Book
-![Static Badge](https://img.shields.io/badge/Status-ongoing-green?style=plastic) <br>
+![Static Badge](https://img.shields.io/badge/Status-good-green?style=plastic) <br>
 # Languages
 ![Static Badge](https://img.shields.io/badge/bash-black?style=plastic&logo=gnubash&logoColor=red)
 ![Static Badge](https://img.shields.io/badge/C++-black?style=plastic&logo=cplusplus&logoColor=blue)
-![Static Badge](https://img.shields.io/badge/Dart-black?style=plastic&logo=dart)
+![Static Badge](https://img.shields.io/badge/Dart-black?style=plastic&logo=dart&logoColor=blue)
 ![Static Badge](https://img.shields.io/badge/Docker-black?style=plastic&logo=docker&logoColor=blue)
 ![Static Badge](https://img.shields.io/badge/Go-black?style=plastic&logo=go&logoColor=blue)
 ![Static Badge](https://img.shields.io/badge/Python-black?style=plastic&logo=python)
