@@ -1,4 +1,6 @@
 void main() {
+
+	  
   // to print something
   print('hello this is my name Mahmud');
   
@@ -72,6 +74,14 @@ void main() {
 	const double gravity = 9.8;
   // note: to declare a constant at class-level we have to make it `static const`
 
+
+  //To check type
+  int a_number=4
+  print(a_number is int)
+  print(a_number is! String)
+  // `&&` is used for 'and', `||` for 'or', `!` for neg of result
+
+	  
   // conditional statements
   // IF and ELSE Statements
 	var salary = 15000;
