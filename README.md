@@ -17,5 +17,18 @@ There is notes about various programming language that I learnt.I tried to detai
 Thanks
 
 
-# Necessary links
+## Necessary links
 <a href="https://htmx.org/docs/#introduction" target="_blank">Learn HTMX</a>
+
+
+## To look cool
+we can try cmatrix and more tool
+```bash
+cmatrix
+docker run --rm -it bcbcarl/hollywood
+```
+### Bash telehack
+There is a bash system where we can have fun
+```bash
+telnet telehack.com
+```
