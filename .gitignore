@@ -1,3 +1,5 @@
 .gitpod.yml
 zig-linux
 .env
+.replit
+replit.nix

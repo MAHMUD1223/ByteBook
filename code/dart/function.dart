@@ -70,10 +70,3 @@ int findVolume2(int length, {int breadth = 2, int height = 20}) {
 	print("Volume is ${length * breadth * height}");
 }
 */
-
-
-
-
-
-
-

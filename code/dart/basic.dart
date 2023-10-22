@@ -76,9 +76,9 @@ void main() {
 
 
   //To check type
-  int a_number=4
-  print(a_number is int)
-  print(a_number is! String)
+  int a_number=4;
+  print(a_number is int);
+  print(a_number is! String);
   // `&&` is used for 'and', `||` for 'or', `!` for neg of result
 
 	  
