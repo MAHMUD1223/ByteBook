@@ -1,5 +1,11 @@
 .gitpod.yml
 zig-linux
 .env
+env
 .replit
 replit.nix
+app.py
+.upm
+poetry.lock
+pyproject.toml
+.pythonlibs
