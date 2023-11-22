@@ -26,7 +26,20 @@ def urls():
 
 @app.route('/')
 def index():
-    return "This is a web development server"
+    return f"""
+           <html>
+           <body>
+           <h1 align="center">This is a web development server<h1>
+           Development Pages are:<br>
+           <ol align="center" type="i">
+           <li>
+           <a href="{url_for('htmx')}">HTMX</a>
+           </li>
+           <li>
+           <a href="{url_for('alpine')}">Alpine-js</a>
+           </li>
+           </ol>
+           """
 
 @app.route('/htmx')
 def htmx():
