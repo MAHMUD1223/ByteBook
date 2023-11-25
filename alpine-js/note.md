@@ -194,4 +194,4 @@ Alpine.store('notifications', {
 ```
 <br>
 Well that was pretty boring. Lets see some example to get ourselves a better understanding.
-You can find example [here](/alpine-js/main.html).
+You can find example <a href="main.html">here</a>.
