@@ -17,18 +17,49 @@ There is notes about various programming language that I learnt.I tried to detai
 Thanks
 
 
-## Necessary links
-<a href="https://htmx.org/docs/#introduction" target="_blank">Learn HTMX</a>
+# Index
+The index of all topics in here.
+##
+1. [Alpine-js](./alpine-js/)
+2. [Bash](./bash/)
+3. [Dark-web](./dark/)
+4. [Dart](./dart/)
+5. [Docker](./docker/)
+6. [Git](./git/)
+7. [Go](./go/)
+8. [Htmx](./htmx/)
+9. [Java](./java/)
+10. [Mojo](./mojo/)
+11. [Postcss](./postcss/)
+12. [Pyscript](./pyscript/)
+13. [Python](./python/)
+14. [Ruby](./ruby/)
+15. [Tmux](./tmux/)
+16. [Typescrpt](./ts/)
+17. [Zig](./zig/)
+<!-- 18. [](.//) -->
 
-
-## To look cool
-we can try cmatrix and more tool
-```bash
-cmatrix
-docker run --rm -it bcbcarl/hollywood
-```
-### Bash telehack
-There is a bash system where we can have fun
-```bash
-telnet telehack.com
-```
+# To look cool
+## In Bash
+There are several we can use let's see.
+- **cmatrix**
+    ```bash
+    cmatrix
+    ```
+- Using Docker
+    looks like some cool effect on bash
+    ```bash
+    docker run --rm -it bcbcarl/hollywood
+    ```
+- **telehack**
+    There is a bash system where we can have fun
+    ```bash
+    telnet telehack.com
+    ```
+- **iftop**
+    Popular tool to monitor computer network
+    Go and download iftop tar file from [here](https://pdw.ex-parrot.com/iftop/). The unzip it and configure done.
+- **bpytop**
+    python based beautiful viewer. Just install and run. for more [see](https://github.com/aristocratos/bpytop)
+- **bottom**
+    Rust based one of the best gives gui like feel. To install, [see](https://github.com/ClementTsang/bottom)

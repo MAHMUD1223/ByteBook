@@ -38,6 +38,9 @@ def index():
            <li>
            <a href="{url_for('alpine')}">Alpine-js</a>
            </li>
+           <li>
+           <a href="{url_for('react')}">React</a>
+           </li>
            </ol>
            """
 
@@ -49,6 +52,11 @@ def htmx():
 @app.route('/alpine')
 def alpine():
     return send_file('alpine-js/main.html')
+
+
+@app.route('/react')
+def react():
+    return send_file('react/main.html')
 
 
 if __name__ == '__main__':
