@@ -1,4 +1,4 @@
-# Byte Book
+p# Byte Book
 ![Static Badge](https://img.shields.io/badge/Status-good-green?style=plastic) <br>
 # Languages
 ![Static Badge](https://img.shields.io/badge/bash-black?style=plastic&logo=gnubash&logoColor=red)
@@ -19,24 +19,27 @@ Thanks
 
 # Index
 The index of all topics in here.
-##
+## Programming
+1. [Bash](./bash/)
+2. [Dart](./dart/)
+3. [Go](./Go/)
+4. [Java](./java/)
+5. [Python](./python/)
+6. [Mojo](./mojo/)
+7. [Ruby](./ruby/)
+8. [Typescrpt](./ts/)
+9. [Zig](./zig/)
+## Library
 1. [Alpine-js](./alpine-js/)
-2. [Bash](./bash/)
-3. [Dark-web](./dark/)
-4. [Dart](./dart/)
-5. [Docker](./docker/)
-6. [Git](./git/)
-7. [Go](./go/)
-8. [Htmx](./htmx/)
-9. [Java](./java/)
-10. [Mojo](./mojo/)
-11. [Postcss](./postcss/)
-12. [Pyscript](./pyscript/)
-13. [Python](./python/)
-14. [Ruby](./ruby/)
-15. [Tmux](./tmux/)
-16. [Typescrpt](./ts/)
-17. [Zig](./zig/)
+2. [Docker](./docker/)
+3. [Git](./git/)
+4. [Htmx](./htmx/)
+5. [Postcss](./postcss/)
+6. [Pyscript](./pyscript/)
+7. [Jquery](./jquery/)
+## Computer skills
+1. [Tmux](./tmux/)
+2. [Dark-web](./dark/)
 <!-- 18. [](.//) -->
 
 # To look cool
