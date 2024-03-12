@@ -1,5 +1,5 @@
-p# Byte Book
-![Static Badge](https://img.shields.io/badge/Status-good-green?style=plastic) <br>
+# ByteBook
+A book that helps to learn. Feel free to contribute.
 # Languages
 ![Static Badge](https://img.shields.io/badge/bash-black?style=plastic&logo=gnubash&logoColor=red)
 ![Static Badge](https://img.shields.io/badge/C++-black?style=plastic&logo=cplusplus&logoColor=blue)
@@ -42,7 +42,7 @@ The index of all topics in here.
 2. [Dark-web](./dark/)
 <!-- 18. [](.//) -->
 
-# To look cool
+# Some flex 😎️😎️😎️
 ## In Bash
 There are several we can use let's see.
 - **cmatrix**
