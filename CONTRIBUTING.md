@@ -39,7 +39,7 @@ Please follow the established coding style and conventions used throughout the p
 
 ## Contributor License Agreement
 
-By contributing to this project, you agree to license your contributions under the [LICENSE](LICENSE.md) file in the root of this repository.
+By contributing to this project, you agree to license your contributions under the [LICENSE](LICENSE) file in the root of this repository.
 
 ## Contact
 
