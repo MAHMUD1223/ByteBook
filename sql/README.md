@@ -76,3 +76,29 @@ USE <database_name>
 ```
 
 ### Interact with database
+Now that we are connected with our database lets do some works
+- To show tables
+```sql
+SHOW TABLES;
+```
+- To create tables
+```sql
+CREATE TABLE <table_name> (<column_name> <data_type>, <column_name> <data_type>, ..., ..., ...);
+```
+An example:
+```sql
+CREATE TABLE coffee_table (id int primary, nameCoffee varchar(255), region varchar(255), roast varchar(255));
+```
+- To see the created table (detailed)
+```sql
+DESCRIBE <table_name>
+```
+#### Insert data into table
+To insert data into the created table type
+```sql
+INSERT INTO <table_name> VALUES (<corresponding_values>)
+```
+e.g.
+```sql
+INSERT INTO coffee_table VALUES (1, "default route", "ethiopia", "light");
+```
