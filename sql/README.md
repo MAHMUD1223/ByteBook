@@ -102,3 +102,12 @@ e.g.
 ```sql
 INSERT INTO coffee_table VALUES (1, "default route", "ethiopia", "light");
 ```
+#### Query data
+To query the data saved in table
+```sql
+SELECT <column> FROM <table_name>;
+```
+e.g.
+```sql
+SELECT * FROM coffee_table;
+```
