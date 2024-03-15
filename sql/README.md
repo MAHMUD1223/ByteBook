@@ -30,6 +30,7 @@ we will go with mysql for learning sql. So, lets get started.
 Just type in terminal
 
 ```sh
+--All of'em are ran on ubuntu
 apt update && apt install mysql-server -y
 ```
 
