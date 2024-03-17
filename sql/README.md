@@ -18,9 +18,37 @@ SQL is widely used in the field of database management and has numerous use case
 
 4. Reporting and Analysis: SQL is often used for generating reports and performing data analysis. It allows users to aggregate and summarize data, calculate metrics, and generate meaningful insights from large datasets.
 
-## Getting started
+# Getting started
 
-we will go with mysql for learning sql. So, lets get started.
+main command in sql is `SELECT`, `UPDATE`, `DELETE`, `INSERT`, `WHERE`
+>[!NOTE]
+>SQL keywords are NOT case sensitive: select is the same as SELECT
+Here are most useful commads in sql
+
+1. `SELECT` - extracts data from a database
+2. `SELECT DISTINCT` - statement is used to return only distinct (different) values
+3. `WHERE` - clause is used to filter records
+4. `ORDER` - BY keyword is used to sort the result-set in ascending or descending order <br> for example
+   ```sql
+   ORDER BY column1, column2, ... ASC|DESC|None-for-alphabetically;
+   ```
+6. 
+7. `UPDATE` - updates data in a database
+8. `DELETE` - deletes data from a database
+9. `INSERT INTO` - inserts new data into a database
+10. `CREATE DATABASE` - creates a new database
+11. `ALTER DATABASE` - modifies a database
+12. `CREATE TABLE` - creates a new table
+13. `ALTER TABLE` - modifies a table
+14. `DROP TABLE` - deletes a table
+15. `CREATE INDEX` - creates an index (search key)
+16. `DROP INDEX` - deletes an index
+
+
+
+# Example
+
+we will go with mysql for this example sql. So, lets get started.
 
 > [!NOTE]
 > This tutorial is written based on ubuntu.
