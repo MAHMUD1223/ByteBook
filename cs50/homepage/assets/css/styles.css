@@ -1,0 +1,38 @@
+footer .sign svg {
+  height: 8rem;
+  width: 10rem;
+  border-bottom: 2px whitesmoke double;
+}
+
+footer #signature {
+  stroke: whitesmoke;
+  stroke-width: 1;
+  stroke-dasharray: 1972;
+  stroke-dashoffset: 1972;
+  transition: 3s all;
+  animation: draw 4s ease-in-out infinite;
+}
+
+@keyframes draw {
+  95% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    fill: white;
+    transition: 3s all;
+  }
+}
+
+footer {
+  background-color: var(--bs-emphasis-color);
+}
+
+footer .sign p {
+  color: whitesmoke;
+}
+
+footer ul li a svg {
+  height: 5rem;
+  width: 5rem;
+}
+

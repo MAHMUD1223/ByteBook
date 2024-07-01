@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                let correctOpt=document.querySelector(".correct");
+                let FeedbackM=document.querySelector("#feedbackM");
+                correctOpt.addEventListener("click", function() {
+                    correctOpt.style.backgroundColor = "green";
+                    FeedbackM.innerHTML = "Correct!";
+                });
+                let incorrectOpt=document.querySelectorAll(".incorrect");
+                for(let i=0; i< incorrectOpt.length; i++){
+                    incorrectOpt[i].addEventListener("click", function() {
+                        incorrectOpt[i].style.backgroundColor = "red";
+                        FeedbackM.innerHTML = "Incorrect!";
+                    });
+                };
+
+                document.querySelector("#check").addEventListener("click", function(){
+                    let text=document.querySelector("input");
+                    let FeedbackT=document.querySelector("#feedbackT");
+                    if(text.value=="96"){
+                        text.style.backgroundColor="green";
+                        FeedbackT.innerHTML="Correct!";
+                    }
+                    else {
+                        text.style.backgroundColor = "red";
+                        FeedbackT.innerHTML="Incorrect!";
+                    }
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is in the center of our universe?</h3>
+                <button class="incorrect">Newton Star</button>
+                <button class="incorrect">Sun</button>
+                <button class="correct">Sagittarius A*</button>
+                <button class="incorrect">Phoenix A*</button>
+                <button class="incorrect">Dawf Star</button>
+                <p id="feedbackM"></p>
+            </div>
+
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What was the age of Queen Elizabeth II ?</h3>
+                <input type="text" autocomplete="off" autofocus >
+                <button id="check">Check</button>
+                <p id="feedbackT"></p>
+            </div>
+        </div>
+    </body>
+</html>

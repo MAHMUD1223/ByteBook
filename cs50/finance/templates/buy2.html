@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Brought {{symbol}}
+{% endblock %}
+
+{% block main %}
+    <table class="table table-light mx-auto w-25">
+        <thead>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ shares }}</td>
+                <td>{{ stock.price }}</td>
+                <td>{{ total }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><br></td>
+                <th>Cash</th>
+                <th>{{ cash }}</th>
+            </tr>
+            <tr>
+                <td colspan="2"><br></td>
+                <th>Total</th>
+                <th>{{ prev }}</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

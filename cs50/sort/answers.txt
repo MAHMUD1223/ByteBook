@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: After analyzing the sorting times for sort1, I found that for a dataset of 10,000 random numeric values, the time range is between 209-230ms. For a smaller dataset of 5,000 numeric values, it takes between 230-250ms. However, for a larger dataset of 50,000 numeric values, it takes about 6540-8324ms. This performance is the lowest compared to Merge Sort and Selection Sort.
+
+sort2 uses: merge sort
+
+How do you know?: Among the three sorting algorithms compared, this algorithm consistently performs the fastest. For a dataset of 10,000 random numeric values, it takes between 70-100ms. For a larger dataset of 50,000 numeric values, the time increases to around 1400-2500ms. This is undoubtedly the Merge Sort algorithm.
+
+sort3 uses: selection sort
+
+How do you know?: Between Sort 1 and Sort 3, the algorithm of Sort 3 is a bit faster than Sort 1. For 10,000 numeric values, the time needed to sort is 140-180ms, whereas it was 200-220ms for Sort 1. For 50,000 numeric values, it took 3872-4324ms, while it was 6500-8000ms for Sort 1. This indicates that Sort 3 is likely Selection Sort.
