@@ -8,3 +8,5 @@ replit.nix
 poetry.lock
 pyproject.toml
 .pythonlibs
+tmp
+tmp/*
