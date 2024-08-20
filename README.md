@@ -68,3 +68,9 @@ There are several we can use let's see.
     python based beautiful viewer. Just install and run. for more [see](https://github.com/aristocratos/bpytop)
 - **bottom**
     Rust based one of the best gives gui like feel. To install, [see](https://github.com/ClementTsang/bottom)
+- **Live-server**
+    To see html changes live using node just do:
+    ```bash
+    npm i -g live-server
+    live-server
+    ```
