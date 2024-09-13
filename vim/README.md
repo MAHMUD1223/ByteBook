@@ -29,7 +29,7 @@ Overall, Vim is a versatile and efficient text editor with a rich history and a 
 - to set up line number write `:set number` and also relative number `:set relativenumber` for next option.
 - now to move certain number of line at one use `<number>` + `up`/`down`.
 - `h` for left, `j` for down, `k` for up and `l` for right cursor move
-- press `w` for jumping char wise (_case sensitive_) use `W` for ignoring that.
+- press `w` for jumping char wise (_case sensitive_) use `W` for ignoring that and alse use `e` to select the word and left tge coursor at the word.
 - press `b` for jumping back char wise (_case sensitive_) use `B` to ignore that
 - to use mouse `:set mouse=a`.
 - to control tabstop `:set tabstop=4`.
@@ -48,12 +48,103 @@ Overall, Vim is a versatile and efficient text editor with a rich history and a 
 - press `yy` for copy whole line
 - press `p` for paste after and `P` for before
 - press `0` to go at the end of the line and `$` to go at the end of the line
+- press `gg` to go at the beginning of the file and `G` to go at the start of the line and to go on a specific line type `<line_number>G` or `:<line_number>`
 - press `%` to jump one parentesis to another
 - press `d%` to delete everything in prentesis
-- press `t<char>` to go the next char of there and `f<char>` to find it
+- press `t<char>` to go the next char of there and `f<char>` to find it and use capital `T<char>` or `F<char>` to look at before the coursor
 - combined with `dt<char>` we can delete till a certain char
 
 > [!NOTE]
 > To save the edited things use write them in `~/.vimrc` <br>
 > use `tab` for suggestion <br>
 > almost every cmd can be used with number of that times
+
+### Advance stuff
+
+- press `>>` or `<<` for indentation to right or left
+- press `==` to auto indent
+- press `shift` + `v` to go into _line visual mode_ which will select only line
+- press `ctrl` + `v` to go into _visual block mode_ which can be used to edit multiple line at a same time
+- to search a word use `/<word>` and use `n` for next use `N` to go back also use `?<word>` to reverse the effect
+- press `*` for down and `#` find up the next occurence of tge selected word
+- to mark a line use `m<letter>` and to go to that line use `'<letter>`
+- press `zz` to center the editor
+- to replace a word in the entire file `:%s/<word>/<new_word>/g`
+- to replace a word in a selected line `:s/<word>/<new_word>/g`
+- press `.` to repeat the previous command
+- write `:reg` to see the registers in vim
+- write `"<reg_num>p` to paste the content on the certain register
+- to register a macro use `q<macro_word>` the do the command sequence and press `q` to end the macro. to execute the macro type `@<macro_word>`
+
+## Sample neovim with plugin
+- Write below setup into `~/.config/nvim/init.vim`
+```lua
+:set number
+:set relativenumber
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+
+call plug#begin()
+
+Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'https://github.com/preservim/nerdtree' " NerdTree
+Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
+Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
+Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+
+set encoding=UTF-8
+
+call plug#end()
+
+nnoremap <C-f> :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+
+nmap <F8> :TagbarToggle<CR>
+
+:set completeopt-=preview " For No Previews
+
+:colorscheme jellybeans
+
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
+" --- Just Some Notes ---
+" :PlugClean :PlugInstall :UpdateRemotePlugins
+"
+" :CocInstall coc-python
+" :CocInstall coc-clangd
+" :CocInstall coc-snippets
+" :CocCommand snippets.edit... FOR EACH FILE TYPE
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+```
+- Then type `:PlugInstall` that's all
