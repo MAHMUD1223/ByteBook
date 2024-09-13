@@ -29,10 +29,28 @@ Overall, Vim is a versatile and efficient text editor with a rich history and a 
 - to set up line number write `:set number` and also relative number `:set relativenumber` for next option.
 - now to move certain number of line at one use `<number>` + `up`/`down`.
 - `h` for left, `j` for down, `k` for up and `l` for right cursor move
+- press `w` for jumping char wise (_case sensitive_) use `W` for ignoring that.
+- press `b` for jumping back char wise (_case sensitive_) use `B` to ignore that
 - to use mouse `:set mouse=a`.
 - to control tabstop `:set tabstop=4`.
 - to change color scheme `:colorscheme <scheme name>`
+- undo with `u`
+- redo with `ctrl`+`r`
+- to switch into _visual_ mode press `v` (you can select in visual mode and do things with them)
+- press `d` for deletation of selected word and `D` for deleting rest of the line after the coursor
+- press `dd` for deleting the whole line
+- `dw` for deleting the words after part use `diw` to delete whole word
+- press `r` for replacing a single char
+- press `cc` for deleting and entering insert mode for whole line
+- press `ciw` to replace a word
+- press `ci"` to change inside a quote
+- press `y` for copy selected word
+- press `yy` for copy whole line
+- press `p` for paste after and `P` for before
+- press `0` to go at the end of the line and `$` to go at the end of the line
+- press `%` to jump one parentesis to another
 
 > [!NOTE]
-> To save the edited things use write them in `~/.vimrc`
-> use `tab` for suggestion
+> To save the edited things use write them in `~/.vimrc` <br>
+> use `tab` for suggestion <br>
+> almost every cmd can be used with number of that times
