@@ -49,6 +49,9 @@ Overall, Vim is a versatile and efficient text editor with a rich history and a 
 - press `p` for paste after and `P` for before
 - press `0` to go at the end of the line and `$` to go at the end of the line
 - press `%` to jump one parentesis to another
+- press `d%` to delete everything in prentesis
+- press `t<char>` to go the next char of there and `f<char>` to find it
+- combined with `dt<char>` we can delete till a certain char
 
 > [!NOTE]
 > To save the edited things use write them in `~/.vimrc` <br>
