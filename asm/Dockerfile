@@ -19,8 +19,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /workspace
 COPY vimrc /root/.vimrc
 COPY gdbinit /root/.gdbinit
-COPY converter /workspace/converter
+COPY converter2.c /workspace/converter.c
+RUN gcc -o /workspace/converter /workspace/converter.c
 RUN chmod +x /workspace/converter
+RUN echo "alias converter='/workspace/converter'" >> /root/.bashrc
 
 # Command to run when starting the container
 CMD ["/bin/bash"]
