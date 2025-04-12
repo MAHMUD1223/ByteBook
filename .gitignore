@@ -10,3 +10,4 @@ pyproject.toml
 .pythonlibs
 tmp
 tmp/*
+node_modules
