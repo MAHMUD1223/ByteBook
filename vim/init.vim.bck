@@ -1,0 +1,143 @@
+" Disable swap/backup files
+set noswapfile
+set nobackup
+set nowritebackup
+set noundofile
+
+" Line numbers and indentation
+set number
+set relativenumber
+set wrap
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
+set encoding=UTF-8
+set termguicolors
+
+" Start Plugin Block
+call plug#begin()
+
+" --- Core Productivity Plugins ---
+Plug 'http://github.com/tpope/vim-surround'                       " Surround text with ys
+Plug 'https://github.com/preservim/nerdtree'                      " File explorer
+Plug 'https://github.com/tpope/vim-commentary'                    " Comment toggling (gcc/gc)
+Plug 'https://github.com/vim-airline/vim-airline'                 " Status line
+Plug 'https://github.com/lifepillar/pgsql.vim'                    " PostgreSQL syntax
+Plug 'https://github.com/ap/vim-css-color'                        " CSS color preview
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'           " Retro colorschemes
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}" Auto-completion
+Plug 'https://github.com/ryanoasis/vim-devicons'                  " File type icons
+Plug 'https://github.com/tc50cal/vim-terminal'                    " Terminal
+Plug 'https://github.com/preservim/tagbar'                        " Symbol navigation
+Plug 'https://github.com/terryma/vim-multiple-cursors'            " CTRL+N multiple cursors
+Plug 'github/copilot.vim'                                         " GitHub Copilot
+
+" --- VS Code Style Tabs ---
+Plug 'nvim-tree/nvim-web-devicons'                                " Icons for tabs
+Plug 'akinsho/bufferline.nvim', {'tag': '*'}                      " Tab line UI
+
+" --- Fuzzy Finder ---
+Plug 'nvim-lua/plenary.nvim'                                      " Lua functions (required)
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}                       " fzf-lua fuzzy finder
+
+call plug#end()
+" End Plugin Block
+
+" --- Plugin Settings ---
+
+" NERDTree Keybindings
+nnoremap <C-f> :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" CoC: Jump to Definition
+nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+
+" Tagbar Toggle
+nmap <F8> :TagbarToggle<CR>
+
+" Bufferline navigation
+nnoremap <S-l> :BufferLineCycleNext<CR>
+nnoremap <S-h> :BufferLineCyclePrev<CR>
+
+" Bufferline Setup (Lua block)
+lua << EOF
+require("bufferline").setup{
+  options = {
+    mode = "buffers",
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    diagnostics = "coc",
+    separator_style = "slant",
+    offsets = {
+      { filetype = "nerdtree", text = "File Explorer", padding = 1 },
+    },
+  }
+}
+EOF
+
+" FZF-Lua Setup (Lua block)
+lua << EOF
+require'fzf-lua'.setup {
+  winopts = {
+    height = 0.85,
+    width  = 0.85,
+    preview = {
+      layout = 'vertical',
+      vertical = 'up:60%',
+    },
+  },
+  files = {
+    prompt = 'Files❯ ',
+    fd_opts = "--color=never --type f --hidden --follow --exclude .git"
+  },
+  grep = {
+    prompt = 'Grep❯ ',
+  },
+}
+EOF
+
+" FZF-Lua Keymaps
+nnoremap <C-p> :lua require'fzf-lua'.files()<CR>         " Fuzzy find files
+nnoremap <leader>b :lua require'fzf-lua'.buffers()<CR>   " List open buffers
+nnoremap <leader>g :lua require'fzf-lua'.live_grep()<CR> " Live Grep
+nnoremap <leader>r :lua require'fzf-lua'.oldfiles()<CR>  " Recently opened files
+nnoremap <leader>w :lua require'fzf-lua'.grep_cword()<CR>" Grep word under cursor
+
+" CoC Completion Behavior
+set completeopt-=preview
+
+" CoC: Auto-confirm on Tab
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+" NERDTree Arrows
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
+" Airline fonts and symbols
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" Color scheme
+colorscheme jellybeans
+
+" --- Notes ---
+" :PlugClean
+" :PlugInstall
+" :UpdateRemotePlugins
+"
+" CoC commands:
+" :CocInstall coc-html coc-css coc-json coc-python coc-tsserver
+" :CocCommand snippets.edit

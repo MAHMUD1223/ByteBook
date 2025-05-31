@@ -1,68 +1,113 @@
-:set noswapfile
-:set nobackup
-:set nowritebackup
-:set noundofile
-:set number
-:set wrap
-:set relativenumber
-:set autoindent
-:set tabstop=4
-:set shiftwidth=4
-:set smarttab
-:set softtabstop=4
-:set mouse=a
+" ----------------------------------
+"       Basic Settings
+" ----------------------------------
+" Disable swap and backup
+set noswapfile
+set nobackup
+set nowritebackup
+set noundofile
 
+" UI/Indentation
+set number
+set relativenumber
+set wrap
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
+set encoding=UTF-8
+set termguicolors
+
+" Completion UI tweak
+set completeopt-=preview
+
+
+" ----------------------------------
+"        Plugin Manager Start
+" ----------------------------------
 call plug#begin()
 
-Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
-Plug 'https://github.com/preservim/nerdtree' " NerdTree
-Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
-Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
-Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
-Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
-Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
-Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
-Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-Plug 'github/copilot.vim' " Copilot setup
+" --- Core Productivity ---
+Plug 'tpope/vim-surround'                              " ysw) and surround editing
+Plug 'preservim/nerdtree'                              " File Explorer
+Plug 'tpope/vim-commentary'                            " gcc / gc commenting
+Plug 'vim-airline/vim-airline'                         " Status line
+Plug 'lifepillar/pgsql.vim'                            " PostgreSQL syntax
+Plug 'ap/vim-css-color'                                " Show CSS color blocks
+Plug 'rafi/awesome-vim-colorschemes'                   " Retro/Vintage color schemes
+Plug 'neoclide/coc.nvim', {'branch': 'release'}        " Autocompletion engine
+Plug 'ryanoasis/vim-devicons'                          " Filetype icons
+Plug 'tc50cal/vim-terminal'                            " Terminal integration
+Plug 'preservim/tagbar'                                " Code symbol outline
+Plug 'terryma/vim-multiple-cursors'                    " CTRL + N multicursor
+Plug 'github/copilot.vim'                              " GitHub Copilot
 
+" --- UI Enhancements ---
+Plug 'nvim-tree/nvim-web-devicons'                     " Required for icons
+Plug 'akinsho/bufferline.nvim', {'tag': '*'}           " VSCode-style tabs
 
-set encoding=UTF-8
+" --- Start Screen ---
+Plug 'goolord/alpha-nvim'						       " Start screen view
+Plug 'nvim-lua/plenary.nvim'						   " Required for alpha-nvim
+Plug 'nvim-telescope/telescope.nvim'				   " Fuzzy finder
 
 call plug#end()
 
-nnoremap <C-f> :NERDTreeFocus<CR>
+
+" ----------------------------------
+"      Keybindings & Behavior
+" ----------------------------------
+
+" NERDTree Mappings
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFocus<CR>
+
+" CoC Jump to definition
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-:set completeopt-=preview " For No Previews
+" Bufferline navigation
+nnoremap <S-l> :BufferLineCycleNext<CR>
+nnoremap <S-h> :BufferLineCyclePrev<CR>
 
-:colorscheme jellybeans
+" CoC autocomplete confirmation
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
 
-" --- Just Some Notes ---
-" :PlugClean :PlugInstall :UpdateRemotePlugins
-"
-" :CocInstall coc-python
-" :CocInstall coc-clangd
-" :CocInstall coc-snippets
-" :CocCommand snippets.edit... FOR EACH FILE TYPE
+" ----------------------------------
+"           UI Configs
+" ----------------------------------
 
-" air-line
+" Bufferline
+lua << EOF
+require("bufferline").setup {
+  options = {
+    mode = "buffers",
+    diagnostics = "coc",
+    separator_style = "slant",
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    offsets = {
+      { filetype = "nerdtree", text = "File Explorer", padding = 1 },
+    },
+  }
+}
+EOF
+
+" NERDTree icons
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" Airline Powerline Fonts
 let g:airline_powerline_fonts = 1
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
-" airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -71,4 +116,52 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+" Colorscheme
+colorscheme jellybeans
+
+
+" ----------------------------------
+"         Alpha Start Screen
+" ----------------------------------
+lua << EOF
+local alpha = require'alpha'
+local dashboard = require'alpha.themes.dashboard'
+
+dashboard.section.header.val = {
+  [[                                                     ]],
+  [[     ███╗   ██╗███████╗██╗   ██╗███╗   ██╗██╗███╗   ███╗]],
+  [[     ████╗  ██║██╔════╝██║   ██║████╗  ██║██║████╗ ████║]],
+  [[     ██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║██║██╔████╔██║]],
+  [[     ██║╚██╗██║██╔══╝  ╚██╗ ██╔╝██║╚██╗██║██║██║╚██╔╝██║]],
+  [[     ██║ ╚████║███████╗ ╚████╔╝ ██║ ╚████║██║██║ ╚═╝ ██║]],
+  [[     ╚═╝  ╚═══╝╚══════╝  ╚═══╝  ╚═╝  ╚═══╝╚═╝╚═╝     ╚═╝]],
+  [[                                                     ]],
+}
+
+dashboard.section.buttons.val = {
+  dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("f", "󰈞  Find file", ":Telescope find_files<CR>"),
+  dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
+  dashboard.button("q", "  Quit", ":qa<CR>"),
+}
+
+dashboard.section.footer.val = { "Neovim ❤️ powered by plugins" }
+dashboard.opts.opts.noautocmd = true
+alpha.setup(dashboard.opts)
+EOF
+
+
+" ----------------------------------
+"             Notes
+" ----------------------------------
+" :PlugInstall
+" :PlugClean
+" :UpdateRemotePlugins
+
+" CoC Extensions:
+" :CocInstall coc-html coc-css coc-json coc-python coc-tsserver
+
+" Snippets:
+" :CocCommand snippets.edit
+
+" Alpha start screen is now active!
