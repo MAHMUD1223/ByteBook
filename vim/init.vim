@@ -52,6 +52,7 @@ Plug 'akinsho/bufferline.nvim', {'tag': '*'}           " VSCode-style tabs
 Plug 'goolord/alpha-nvim'						       " Start screen view
 Plug 'nvim-lua/plenary.nvim'						   " Required for alpha-nvim
 Plug 'nvim-telescope/telescope.nvim'				   " Fuzzy finder
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}            " fzf-lua fuzzy finder
 
 call plug#end()
 
@@ -64,6 +65,34 @@ call plug#end()
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFocus<CR>
+
+" FZF-Lua Setup (Lua block)
+lua << EOF
+require'fzf-lua'.setup {
+  winopts = {
+    height = 0.85,
+    width  = 0.85,
+    preview = {
+      layout = 'vertical',
+      vertical = 'up:60%',
+    },
+  },
+  files = {
+    prompt = 'Files❯ ',
+    fd_opts = "--color=never --type f --hidden --follow --exclude .git"
+  },
+  grep = {
+    prompt = 'Grep❯ ',
+  },
+}
+EOF
+
+" FZF-Lua Keymaps
+nnoremap <C-p> :lua require'fzf-lua'.files()<CR>         " Fuzzy find files
+nnoremap <leader>b :lua require'fzf-lua'.buffers()<CR>   " List open buffers
+nnoremap <leader>g :lua require'fzf-lua'.live_grep()<CR> " Live Grep
+nnoremap <leader>r :lua require'fzf-lua'.oldfiles()<CR>  " Recently opened files
+nnoremap <leader>w :lua require'fzf-lua'.grep_cword()<CR>" Grep word under cursor
 
 " CoC Jump to definition
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
