@@ -18,7 +18,27 @@ Overall, Vim is a versatile and efficient text editor with a rich history and a 
 
 <br>
  Okay, so lets get started.
-
+ <br>
+ ## Some pre setup
+ Before runing `:PlugInstall` install the vim-plug first with these command
+ ```bash
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ ```
+Also you need to install nerdfornt for symbols with these command in termux
+```bash
+mkdir -p ~/.termux
+cd ~/.termux
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+unzip JetBrainsMono.zip
+mv "JetBrainsMonoNerdFontMono-Regular.ttf" font.ttf
+rm JetBrainsMono.zip
+termux-reload-settings
+```
+Then test it with in nvim
+```bash
+:echo "\ue0b0 \uf121 \uf002 \uf015"
+```
 ## Learning vim
 
 - to write and quit `:wq`
