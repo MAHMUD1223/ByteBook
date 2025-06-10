@@ -43,6 +43,7 @@ Plug 'tc50cal/vim-terminal'                            " Terminal integration
 Plug 'preservim/tagbar'                                " Code symbol outline
 Plug 'terryma/vim-multiple-cursors'                    " CTRL + N multicursor
 Plug 'github/copilot.vim'                              " GitHub Copilot
+Plug 'voldikss/vim-floaterm'							" Floating terminal
 
 " --- UI Enhancements ---
 Plug 'nvim-tree/nvim-web-devicons'                     " Required for icons
@@ -88,11 +89,60 @@ require'fzf-lua'.setup {
 EOF
 
 " FZF-Lua Keymaps
-nnoremap <C-p> :lua require'fzf-lua'.files()<CR>         " Fuzzy find files
-nnoremap <leader>b :lua require'fzf-lua'.buffers()<CR>   " List open buffers
-nnoremap <leader>g :lua require'fzf-lua'.live_grep()<CR> " Live Grep
-nnoremap <leader>r :lua require'fzf-lua'.oldfiles()<CR>  " Recently opened files
-nnoremap <leader>w :lua require'fzf-lua'.grep_cword()<CR>" Grep word under cursor
+nnoremap <C-p> :lua require'fzf-lua'.files()<CR>
+nnoremap <leader>b :lua require'fzf-lua'.buffers()<CR>
+nnoremap <leader>g :lua require'fzf-lua'.live_grep()<CR>
+nnoremap <leader>r :lua require'fzf-lua'.oldfiles()<CR>
+nnoremap <leader>w :lua require'fzf-lua'.grep_cword()<CR>
+
+" FZF-Lua Setup (cleaned prompts)
+lua << EOF
+require('fzf-lua').setup {
+  files = {
+    prompt = ''
+  },
+  buffers = {
+    prompt = ''
+  },
+  grep = {
+    prompt = ''
+  },
+  oldfiles = {
+    prompt = ''
+  },
+  grep_cword = {
+    prompt = ''
+  }
+}
+EOF
+
+" Floaterm configuration
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+let g:floaterm_position = 'center'
+let g:floaterm_borderchars = '─│─│╭╮╯╰'
+let g:floaterm_wintype = 'float'
+" Floaterm keybindings
+" Floaterm toggle with F12
+nnoremap <F12> :FloatermToggle<CR>
+tnoremap <F12> <C-\><C-n>:FloatermToggle<CR>
+
+" Normal mode (silent, no echo messages)
+nnoremap <silent> <leader>tn :silent! FloatermNew<CR>
+nnoremap <silent> <leader>tl :silent! FloatermNext<CR>
+nnoremap <silent> <leader>th :silent! FloatermPrev<CR>
+nnoremap <silent> <leader>tc :silent! FloatermKill<CR>
+nnoremap <silent> <leader>ts :silent! FloatermSend<CR>
+nnoremap <silent> <leader>tS :silent! FloatermSend<CR>
+
+" Terminal mode (also silent)
+tnoremap <silent> <leader>tn <C-\><C-n>:silent! FloatermNew<CR>
+tnoremap <silent> <leader>tl <C-\><C-n>:silent! FloatermNext<CR>
+tnoremap <silent> <leader>th <C-\><C-n>:silent! FloatermPrev<CR>
+tnoremap <silent> <leader>tc <C-\><C-n>:silent! FloatermKill<CR>
+tnoremap <silent> <leader>ts <C-\><C-n>:silent! FloatermSend<CR>
+tnoremap <silent> <leader>tS <C-\><C-n>:silent! FloatermSend<CR>
+
 
 " CoC Jump to definition
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
