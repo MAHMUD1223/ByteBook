@@ -54,6 +54,7 @@ Plug 'akinsho/bufferline.nvim', {'tag': '*'}           " VSCode-style tabs
 Plug 'goolord/alpha-nvim'						       " Start screen view
 Plug 'nvim-lua/plenary.nvim'						   " Required for alpha-nvim
 Plug 'nvim-telescope/telescope.nvim'				   " Fuzzy finder
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax highlighting and more
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}            " fzf-lua fuzzy finder
 
 call plug#end()
@@ -281,6 +282,12 @@ EOF
 " ----------------------------------
 "             Notes
 " ----------------------------------
+" Plugin Installation:
+"  Vim-Plug installation:
+"  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+"  To install plugins, run the following commands in Neovim:
 " :PlugInstall
 " :PlugClean
 " :UpdateRemotePlugins
@@ -288,11 +295,30 @@ EOF
 " CoC Extensions:
 " :CocInstall coc-html coc-css coc-json coc-python coc-tsserver
 " For more extensions, checkout the coc_extenstions.txt file here
+" There you will see the output of these commands:
+" :redir > coc_extensions.txt
+" :echo system("jq -r '.dependencies | keys[]' ~/.config/coc/extensions/package.json")
+" :redir END
 
 " Snippets:
 " :CocCommand snippets.edit
 
 " Alpha start screen is now active!
+
+
+" ----------------------------------
+"     Extra things
+" ----------------------------------
+
+" Termux keybindings
+
+" clipboard
+" Copy selected text to Android clipboard
+vnoremap <leader>y :w !termux-clipboard-set<CR>
+
+" Paste Android clipboard contents into buffer
+nnoremap <leader>p :r !termux-clipboard-get<CR>
+
 " colorscheme all preview
 function! CycleColorschemes()
   let colors = getcompletion('', 'color')
