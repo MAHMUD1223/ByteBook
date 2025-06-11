@@ -31,7 +31,8 @@ call plug#begin()
 
 " --- Core Productivity ---
 Plug 'tpope/vim-surround'                              " ysw) and surround editing
-Plug 'preservim/nerdtree'                              " File Explorer
+Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'} " File Explorer (Neo-tree)
+Plug 'MunifTanjim/nui.nvim'							   " Required for Neo-tree
 Plug 'tpope/vim-commentary'                            " gcc / gc commenting
 Plug 'vim-airline/vim-airline'                         " Status line
 Plug 'lifepillar/pgsql.vim'                            " PostgreSQL syntax
@@ -62,10 +63,51 @@ call plug#end()
 "      Keybindings & Behavior
 " ----------------------------------
 
-" NERDTree Mappings
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFocus<CR>
+" Neo-tree Mappings
+nnoremap <C-n> :Neotree reveal toggle<CR>
+nnoremap <C-t> :Neotree toggle<CR>
+nnoremap <C-f> :Neotree focus<CR>
+
+" NEOTree Configurations
+lua << EOF
+require("neo-tree").setup({
+  close_if_last_window = true,
+  enable_git_status = true,
+  enable_diagnostics = true,
+  default_component_configs = {
+    indent = {
+      padding = 1,
+    },
+    icon = {
+      folder_closed = "",
+      folder_open = "",
+      folder_empty = "",
+    },
+    name = {
+      trailing_slash = false,
+      use_git_status_colors = true,
+    },
+  },
+  window = {
+    position = "left",
+    width = 30,
+    mappings = {
+      ["<space>"] = "toggle_node",
+      ["<cr>"] = "open",
+      ["s"] = "open_split",
+      ["v"] = "open_vsplit",
+      ["q"] = "close_window",
+    },
+  },
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = true,
+      hide_gitignored = true,
+    },
+    follow_current_file = { enabled = true },
+  },
+})
+EOF
 
 " FZF-Lua Setup (Lua block)
 lua << EOF
@@ -90,7 +132,7 @@ EOF
 
 " FZF-Lua Keymaps
 nnoremap <C-p> :lua require'fzf-lua'.files()<CR>
-nnoremap <leader>b :lua require'fzf-lua'.buffers()<CR>
+nnoremap <leader>b :lua require'fzf-lua'.bufferd()<CR>
 nnoremap <leader>g :lua require'fzf-lua'.live_grep()<CR>
 nnoremap <leader>r :lua require'fzf-lua'.oldfiles()<CR>
 nnoremap <leader>w :lua require'fzf-lua'.grep_cword()<CR>
@@ -162,6 +204,8 @@ inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 "           UI Configs
 " ----------------------------------
 
+
+
 " Bufferline
 lua << EOF
 require("bufferline").setup {
@@ -172,15 +216,19 @@ require("bufferline").setup {
     show_buffer_close_icons = false,
     show_close_icon = false,
     offsets = {
-      { filetype = "nerdtree", text = "File Explorer", padding = 1 },
+      {
+        filetype = "neo-tree",
+        text = "File Explorer",
+        highlight = "Directory",
+        text_align = "center",
+        separator = true,
+        padding = 1,
+      },
     },
-  }
+  },
 }
 EOF
 
-" NERDTree icons
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
 
 " Airline Powerline Fonts
 let g:airline_powerline_fonts = 1
@@ -239,8 +287,21 @@ EOF
 
 " CoC Extensions:
 " :CocInstall coc-html coc-css coc-json coc-python coc-tsserver
+" For more extensions, checkout the coc_extenstions.txt file here
 
 " Snippets:
 " :CocCommand snippets.edit
 
 " Alpha start screen is now active!
+" colorscheme all preview
+function! CycleColorschemes()
+  let colors = getcompletion('', 'color')
+  for c in colors
+    execute 'colorscheme ' . c
+    redraw
+    echo "Colorscheme: " . c
+    sleep 2
+  endfor
+endfunction
+
+command! CycleThemes call CycleColorschemes()
