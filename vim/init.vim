@@ -35,9 +35,11 @@ Plug 'nvim-neo-tree/neo-tree.nvim', {'branch': 'v3.x'} " File Explorer (Neo-tree
 Plug 'MunifTanjim/nui.nvim'							   " Required for Neo-tree
 Plug 'tpope/vim-commentary'                            " gcc / gc commenting
 Plug 'vim-airline/vim-airline'                         " Status line
+Plug 'vim-airline/vim-airline-themes'                  " Airline themes
 Plug 'lifepillar/pgsql.vim'                            " PostgreSQL syntax
 Plug 'ap/vim-css-color'                                " Show CSS color blocks
 Plug 'rafi/awesome-vim-colorschemes'                   " Retro/Vintage color schemes
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }	   "TokyoNight color scheme
 Plug 'neoclide/coc.nvim', {'branch': 'release'}        " Autocompletion engine
 Plug 'ryanoasis/vim-devicons'                          " Filetype icons
 Plug 'tc50cal/vim-terminal'                            " Terminal integration
@@ -245,8 +247,11 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " Colorscheme
-colorscheme jellybeans
-
+" colorscheme jellybeans
+syntax enable
+set termguicolors " Required for tokyonight
+let g:airline_theme = "jellybeans" " Set airline aka status line theme
+colorscheme tokyonight-night
 
 " ----------------------------------
 "         Alpha Start Screen
