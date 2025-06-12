@@ -1,0 +1,25 @@
+{
+  "snippets.ultisnips.pythonPrompt": false,
+  "languageserver": {
+    "lua": {
+      "command": "/data/data/com.termux/files/home/lua-language-server/bin/lua-language-server",
+      "args": ["-E", "/data/data/com.termux/files/home/lua-language-server/main.lua"],
+      "filetypes": ["lua"],
+      "settings": {
+        "Lua": {
+          "runtime": {
+            "version": "Lua 5.4"
+          },
+          "diagnostics": {
+            "globals": ["vim"]
+          },
+          "workspace": {
+            "library": [
+              "/data/data/com.termux/files/usr/share/nvim/runtime/lua"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
