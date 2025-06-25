@@ -114,6 +114,11 @@
 | `n` | `\g` | Live grep |
 | `n` | `\b` | Show buffers |
 
+## ✨ Prettier & Formatting
+| Mode | Key        | Description |
+|------|------------|-------------|
+| `n` | `\f` | Prettier format current file (vim.lsp.buf.formatting_sync()) |
+
 ## 🧠 LSP & Code Navigation
 
 | Mode | Key        | Description |

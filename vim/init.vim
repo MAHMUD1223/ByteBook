@@ -66,6 +66,9 @@ call plug#end()
 "      Keybindings & Behavior
 " ----------------------------------
 
+" Prettier keybindings
+nnoremap <leader>f :CocCommand prettier.formatFile<CR>
+
 " Neo-tree Mappings
 nnoremap <C-n> :Neotree reveal toggle<CR>
 nnoremap <C-t> :Neotree toggle<CR>
