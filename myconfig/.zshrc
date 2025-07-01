@@ -126,3 +126,41 @@ figlet Shell | lolcat --force
 alias luamake="/data/data/com.termux/files/home/lua-language-server/3rd/luamake/luamake"
 export LUA_LS_DIR="/data/data/com.termux/files/home/lua-language-server"
 export LUA_LS_BIN="/data/data/com.termux/files/home/lua-language-server/bin/lua-language-server"
+
+
+
+upload_0() {
+  local file_path="$1"
+
+  if [[ -z "$file_path" ]]; then
+    echo "Usage: upload_0 <file_path>"
+    return 1
+  fi
+
+  if [[ ! -f "$file_path" ]]; then
+    echo "Error: File '$file_path' not found."
+    return 1
+  fi
+
+  echo "Uploading '$file_path' to 0x0.st..."
+
+  # Upload and capture the full HTTP response
+  local response
+  response=$(curl -s -i -F "file=@${file_path}" -Fexpires=24 https://0x0.st)
+
+  # Extract URL (usually in the last line)
+  local url token
+  url=$(echo "$response" | tail -n 1)
+
+  # Extract X-Token if available
+  token=$(echo "$response" | grep -i 'X-Token:' | awk '{print $2}' | tr -d '\r')
+
+  echo "\nUpload URL: $url\n"
+
+  if [[ -n "$token" ]]; then
+    echo "Management Token (X-Token): $token"
+    echo "Keep this token to manage the file (delete/change expiry)."
+  else
+    echo "Note: No management token was returned. File may already exist or hasn't expired yet."
+  fi
+}
